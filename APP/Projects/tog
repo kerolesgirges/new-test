@@ -1,0 +1,47 @@
+/*
+ * tog.c
+ *
+ *  Created on: Jun 19, 2023
+ *      Author: Moataz
+ */
+#define F_CPU 16000000UL
+#include <avr/interrupt.h>
+#include <util/delay.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
+
+#include "Timer_Private.h"
+
+#include "Projects_Interface.h"
+#include "DIO_Private.h"
+
+#include <string.h>
+#include <stdlib.h>
+
+#include "Projects_Interface.h"
+#include "DIO_Interface.h"
+#include "ICU_interface.h"
+#include "ICU_Private.h"
+#include <string.h>
+#include <stdlib.h>
+
+
+
+void test(void)
+{
+	H_LED_Void_LedTog(LED_YEL);
+	}
+int main(void)
+{
+	H_LED_Void_LedInit(LED_YEL);
+	M_Timer_Void_Timer_2_Init();
+	M_Timer_Void_SetCallBack2(test);
+	M_GIE_Void_GlobalInterruptEnable();
+	M_Timer_Void_Timer_2_SetTime(120);
+	M_Timer_Void_TimerStart2(TIMER2_CHANNEL);
+	H_LED_Void_LedOn(LED_YEL);
+	while(1);
+
+	return 0 ;
+}

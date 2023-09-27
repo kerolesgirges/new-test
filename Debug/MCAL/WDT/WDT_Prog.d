@@ -1,0 +1,1 @@
+MCAL/WDT/WDT_Prog.o MCAL/WDT/WDT_Prog.o: ../MCAL/WDT/WDT_Prog.c
